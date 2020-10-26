@@ -13,7 +13,22 @@ function success(item) {
 }
 
 function fail(item) {
-  return { ...item };
+  const newItem = {
+    ...item
+  }
+
+  if(item.enchantment >= 16){
+    newItem.enchantment  = --item.enchantment;
+    newItem.durability -= 10;
+  }
+  else if(item.enchantment === 15){
+    newItem.durability -= 10;
+  }
+  else if(item.enchantment < 15){
+    newItem.durability  -= 5;
+  }
+  
+  return newItem;
 }
 
 function repair(item) {
