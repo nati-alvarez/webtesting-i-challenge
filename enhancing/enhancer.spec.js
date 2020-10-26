@@ -50,9 +50,9 @@ describe("enchantment fail", ()=>{
         expect(enhancer.fail(item).durability).toBe(20);
     });
 
-    it("Should decrease enchantment by 1 if enchantment is 16 or greater", ()=>{
+    it("Should decrease enchantment by 1 and durability by 10 if enchantment is 16 or greater", ()=>{
         item.enchantment = 16;
-        const newItem = enchancer.fail(item);
+        const newItem = enhancer.fail(item);
         expect(newItem.enchantment).toBe(15);
         expect(newItem.durability).toBe(20);
     });
