@@ -1,4 +1,4 @@
-const { expect } = require('@jest/globals');
+const { it, expect } = require('@jest/globals');
 const enhancer = require('./enhancer.js');
 // test away!
 
@@ -57,3 +57,20 @@ describe("enchantment fail", ()=>{
         expect(newItem.durability).toBe(20);
     });
 });
+
+describe("get", ()=>{
+    const item = {
+        name: "Sword",
+        durability: 30,
+        enchantment: 0
+    }
+    
+    it("Should not change name if enchantment is 0", ()=>{
+        expect(enhancer.get(item).name).toBe("Sword");
+    });
+
+    it("Should update name with enchantment level", ()=>{
+        item.enchantment = 12;
+        expect(enhancer.get(item).name).toBe("[+12] Sword");
+    })
+})
