@@ -1,4 +1,4 @@
-const { it, expect } = require('@jest/globals');
+const { expect } = require('@jest/globals');
 const enhancer = require('./enhancer.js');
 // test away!
 
@@ -31,5 +31,29 @@ describe("enchantment success", ()=>{
 
     it("Should not affect durability", ()=>{
         expect(enhancer.success(item).durability).toBe(30);
+    });
+});
+
+describe("enchantment fail", ()=>{
+    const item = {
+        name: "Sword",
+        durability: 30,
+        enchantment: 3
+    }
+
+    it("Should decrease durability by 5 if enchantment is less than 15", ()=>{
+        expect(enhancer.fail(item).durability).toBe(25);
+    });
+
+    it("Should decrease durability by 10 if enchanment is 15 or greater", ()=>{
+        item.enchantment = 15;
+        expect(enhancer.fail(item).durability).toBe(20);
+    });
+
+    it("Should decrease enchantment by 1 if enchantment is 16 or greater", ()=>{
+        item.enchantment = 16;
+        const newItem = enchancer.fail(item);
+        expect(newItem.enchantment).toBe(15);
+        expect(newItem.durability).toBe(20);
     });
 });
