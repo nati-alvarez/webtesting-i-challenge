@@ -6,7 +6,10 @@ module.exports = {
 };
 
 function success(item) {
-  return { ...item };
+  return { 
+    ...item,
+    enchantment: item.enchantment === 20? item.enchantment: ++item.enchantment
+  };
 }
 
 function fail(item) {
