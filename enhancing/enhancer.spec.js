@@ -1,4 +1,3 @@
-const { it, expect } = require('@jest/globals');
 const enhancer = require('./enhancer.js');
 // test away!
 
